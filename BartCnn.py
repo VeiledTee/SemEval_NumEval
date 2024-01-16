@@ -17,9 +17,11 @@ with open(dataPath, "r") as dataFile: #get data out of .json
     data = json.load(dataFile)
 bartModel = BartModel(modelName) #inintalize bart model
 
-def bart_processing(data:dict): 
+def bartProcessing(data:dict, numSamples:int): 
     """
     This function takes in the data and and creats a dictionary with the formated contents.
+    Input: data = dictionary train_numerical_reasoning.json, numSamples: the number of samples outputted
+    output: dict
     X:embeddings of data, 
     y:tokenized lables, 
     max_words:the max number of words in any given body of text, 
@@ -28,20 +30,17 @@ def bart_processing(data:dict):
     num_classes:the number of unique classes/answesr/lables}
     """
     retData = {"X":[], "y":[], "max_words":0, "max_sequence_length":0, "num_classes":0, "max_label_length":0}
-    
+    tests = [] #this is a list of all texts in the data
+    lables = [] #list of lables coresponding to each text entry
+    sampleCount = 0
     for sample in data:
         text = str(sample["news"])
         label = str(sample["ans"])
+        if sampleCount > numSamples: #break the loop when num samples reached
+            break
+        sampleCount += 1
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     return retData
 
 
