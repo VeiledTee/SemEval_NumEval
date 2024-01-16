@@ -1,3 +1,6 @@
+"""
+This is the basic framework for a hugging face model. Any hugging face model can be passed in (but only bart modles have been tested). 
+"""
 from transformers import AutoTokenizer, AutoModel
 import numpy as np
 
